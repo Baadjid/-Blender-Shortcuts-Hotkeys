@@ -593,6 +593,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize the app
     window.app = new BlenderShortcutsApp();
     
+    // Globale Variable für aktuellen Sprache setzen
+    window.currentLanguage = 'de';
+    
     // Add debugging helpers in development
     if (config.development.enableDevTools) {
         window.debug = {
