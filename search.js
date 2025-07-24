@@ -224,33 +224,38 @@ class SearchManager {
     }
 
     resetView() {
-        this.isSearching = false;
-        
-        // Show all items in current category
-        const shortcutItems = document.querySelectorAll('.shortcut-item');
-        shortcutItems.forEach(item => {
-            this.showItem(item, false);
-        });
+    this.isSearching = false;
+    
+    // Show all items in current category
+    const shortcutItems = document.querySelectorAll('.shortcut-item');
+    shortcutItems.forEach(item => {
+        this.showItem(item, false);
+    });
 
-        // Reset categories view
-        const categories = document.querySelectorAll('.category');
-        categories.forEach(category => {
-            category.classList.remove('active');
-        });
+    // Reset categories view
+    const categories = document.querySelectorAll('.category');
+    categories.forEach(category => {
+        category.classList.remove('active');
+    });
 
-        // Show current category
-        if (window.uiManager) {
-            window.uiManager.updateContent();
-        }
-
-        // Reset tabs
-        const tabs = document.getElementById('tabs');
-        if (tabs) {
-            tabs.classList.remove('search-mode');
-        }
-
-        this.searchResults = [];
+    // Show current category
+    if (window.uiManager) {
+        window.uiManager.updateContent();
     }
+
+    // Reset tabs
+    const tabs = document.getElementById('tabs');
+    if (tabs) {
+        tabs.classList.remove('search-mode');
+    }
+
+    this.searchResults = [];
+    
+    // Stats zurücksetzen zur normalen Anzeige
+    if (window.uiManager) {
+        window.uiManager.updateStats();
+    }
+}
 
     clearSearch() {
         this.searchInput.value = '';
@@ -271,22 +276,23 @@ class SearchManager {
     }
 
     updateSearchStats() {
-        const statsElement = document.getElementById('stats-text');
-        if (!statsElement) return;
+    const statsElement = document.getElementById('stats-text');
+    if (!statsElement) return;
 
-        if (this.isSearching && this.currentSearchTerm) {
-            const visibleCount = this.searchResults.length;
-            const totalCount = document.querySelectorAll('.shortcut-item').length;
-            
-            if (visibleCount === 0) {
-                statsElement.textContent = t('no-shortcuts', window.uiManager?.currentLanguage || 'de');
-            } else {
-                statsElement.textContent = tf('showing-results', visibleCount, totalCount);
-            }
-        } else if (window.uiManager) {
-            window.uiManager.updateStats();
+    if (this.isSearching && this.currentSearchTerm) {
+        const visibleCount = this.searchResults.length;
+        const totalCount = document.querySelectorAll('.shortcut-item').length;
+        
+        if (visibleCount === 0) {
+            statsElement.textContent = t('no-shortcuts', window.uiManager?.currentLanguage || 'de');
+        } else {
+            statsElement.textContent = tf('showing-results', visibleCount, totalCount);
         }
+    } else if (window.uiManager) {
+        // Zurück zur normalen Stats-Anzeige
+        window.uiManager.updateStats();
     }
+}
 
     focusFirstResult() {
         if (this.searchResults.length > 0) {
