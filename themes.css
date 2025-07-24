@@ -1,0 +1,272 @@
+/* Dark Mode Theme */
+.dark-mode {
+    --text-color: #ecf0f1;
+    --bg-white: #34495e;
+    --bg-light: #2c3e50;
+    --border-color: #34495e;
+    --background-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+.dark-mode .container {
+    background: rgba(44, 62, 80, 0.95);
+}
+
+.dark-mode .main-title {
+    color: #ecf0f1;
+    background: linear-gradient(45deg, #3498db, #e74c3c);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dark-mode .subtitle {
+    color: #bdc3c7;
+}
+
+.dark-mode .info-card {
+    background: #2c3e50;
+    color: #ecf0f1;
+    border-left-color: #3498db;
+}
+
+.dark-mode .search-input {
+    background: #34495e;
+    color: #ecf0f1;
+    border-color: #3498db;
+}
+
+.dark-mode .search-input::placeholder {
+    color: #95a5a6;
+}
+
+.dark-mode .shortcut-item {
+    background: #34495e;
+    color: #ecf0f1;
+    border-left-color: #3498db;
+}
+
+.dark-mode .shortcut-item:hover {
+    background: #3c5a78;
+}
+
+.dark-mode .shortcut-item.highlight {
+    background: #8b7355;
+    border-left-color: #f39c12;
+}
+
+.dark-mode .shortcut-description {
+    color: #ecf0f1;
+}
+
+.dark-mode .shortcut-note {
+    color: #95a5a6;
+}
+
+.dark-mode .category-title {
+    color: #ecf0f1;
+}
+
+.dark-mode .modal-content {
+    background: #34495e;
+    color: #ecf0f1;
+}
+
+.dark-mode .modal h2 {
+    color: #3498db;
+    border-bottom-color: #3498db;
+}
+
+.dark-mode .modal h3 {
+    color: #ecf0f1;
+}
+
+.dark-mode .modal kbd {
+    background: #2c3e50;
+    border-color: #34495e;
+    color: #ecf0f1;
+}
+
+.dark-mode .difficulty-info {
+    background: #2c3e50;
+    border-left-color: #3498db;
+}
+
+.dark-mode .filter-btn {
+    background: #34495e;
+    color: #ecf0f1;
+    border-color: #34495e;
+}
+
+.dark-mode .filter-btn:hover {
+    border-color: #3498db;
+}
+
+/* High Contrast Theme */
+.high-contrast {
+    --text-color: #000000;
+    --bg-white: #ffffff;
+    --bg-light: #f0f0f0;
+    --border-color: #000000;
+    --primary-color: #0000ff;
+    --secondary-color: #ff0000;
+    --background-gradient: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+}
+
+.high-contrast .shortcut-item {
+    border: 2px solid #000000;
+}
+
+.high-contrast .shortcut-key {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #000000;
+}
+
+.high-contrast .lang-btn,
+.high-contrast .action-btn-inline,
+.high-contrast .tab {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #000000;
+}
+
+.high-contrast .lang-btn.active,
+.high-contrast .tab.active {
+    background: #0000ff;
+    color: #ffffff;
+}
+
+/* Reduced Motion Theme */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .spinner {
+        animation: none;
+        border: 4px solid var(--primary-color);
+        border-radius: 50%;
+    }
+    
+    .category {
+        animation: none;
+    }
+    
+    .shortcut-item.highlight {
+        animation: none;
+        background: #fff3cd;
+        box-shadow: 0 0 10px rgba(255, 193, 7, 0.4);
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .container {
+        box-shadow: none;
+        background: white;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    .floating-actions,
+    .search-container,
+    .tabs,
+    .language-selector,
+    .filter-controls,
+    .action-btn-inline {
+        display: none !important;
+    }
+    
+    .category {
+        display: block !important;
+        page-break-inside: avoid;
+        margin-bottom: 30px;
+    }
+    
+    .shortcut-item {
+        break-inside: avoid;
+        background: white;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+    
+    .shortcut-key {
+        background: #f0f0f0;
+        color: black;
+        border: 1px solid #ccc;
+    }
+    
+    .main-title {
+        color: black;
+        background: none;
+        -webkit-text-fill-color: initial;
+    }
+    
+    .category-title {
+        color: black;
+        border-bottom-color: #ccc;
+    }
+    
+    .info-cards {
+        display: none;
+    }
+}
+
+/* Custom Theme Variables for Different Blender Versions */
+.theme-blender-2x {
+    --primary-color: #ff7700;
+    --secondary-color: #0099cc;
+    --background-gradient: linear-gradient(135deg, #ff7700 0%, #ffaa44 100%);
+}
+
+.theme-blender-3x {
+    --primary-color: #4a90e2;
+    --secondary-color: #f5a623;
+    --background-gradient: linear-gradient(135deg, #4a90e2 0%, #7ed321 100%);
+}
+
+.theme-blender-4x {
+    --primary-color: #3498db;
+    --secondary-color: #e74c3c;
+    --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Accessibility Improvements */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus indicators */
+button:focus,
+input:focus,
+.tab:focus,
+.shortcut-key:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* High contrast focus for accessibility */
+@media (prefers-contrast: high) {
+    button:focus,
+    input:focus,
+    .tab:focus,
+    .shortcut-key:focus {
+        outline: 3px solid #000000;
+        outline-offset: 2px;
+    }
+}

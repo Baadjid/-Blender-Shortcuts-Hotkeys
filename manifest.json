@@ -1,0 +1,168 @@
+{
+  "name": "Blender Shortcuts & Hotkeys",
+  "short_name": "Blender Shortcuts",
+  "description": "Comprehensive multilingual Blender shortcuts reference for version 4.x with 200+ shortcuts in 10 categories",
+  "version": "2.0.0",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#3498db",
+  "background_color": "#ffffff",
+  "lang": "de",
+  "dir": "ltr",
+  "categories": ["productivity", "reference", "education"],
+  "shortcuts": [
+    {
+      "name": "Search Shortcuts",
+      "short_name": "Search",
+      "description": "Quickly search for Blender shortcuts",
+      "url": "/?action=search",
+      "icons": [
+        {
+          "src": "assets/icons/search-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Export Shortcuts",
+      "short_name": "Export",
+      "description": "Export shortcuts in various formats",
+      "url": "/?action=export",
+      "icons": [
+        {
+          "src": "assets/icons/export-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "src": "assets/icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/screenshots/desktop-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Blender Shortcuts App on Desktop"
+    },
+    {
+      "src": "assets/screenshots/mobile-narrow.png",
+      "sizes": "375x812",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Blender Shortcuts App on Mobile"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://www.blender.org",
+      "id": "org.blender.BlenderBIM"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "navigate-new"]
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+blendershortcuts",
+      "url": "/?shortcut=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "text/markdown": [".md"],
+        "application/json": [".json"],
+        "text/csv": [".csv"]
+      }
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "shortcuts",
+          "accept": ["text/markdown", "application/json", "text/csv"]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blender Shortcuts & Hotkeys - Multilingual</title>
+    <meta name="description" content="Comprehensive multilingual Blender shortcuts reference for version 4.x">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">🔥 Blender Shortcuts & Hotkeys</h1>
+            <p class="subtitle">Komplette mehrsprachige Übersicht aller Tastenkürzel für Blender 4.x</p>
+        </header>
+
+        <div class="controls">
+            <div class="language-selector">
+                <button class="lang-btn active" onclick="setLanguage('de')" data-lang="de">
+                    🇩🇪 Deutsch
+                </button>
+                <button class="lang-btn" onclick="setLanguage('en')" data-lang="en">
+                    🇺🇸 English
+                </button>
+                <button class="lang-btn" onclick="setLanguage('ru')" data-lang="ru">
+                    🇷🇺 Русский
+                </button>
+                <button class="action-btn-inline" onclick="exportShortcuts()" title="Export shortcuts">
+                    📥 Export
+                </button>
+                <button class="action-btn-inline" onclick="toggleDarkMode()" title="Dark Mode">
+                    🌙 Dark Mode
+                </button>
+                <button class="action-btn-inline" onclick="toggleFullscreen()" title="Vollbild">
+                    ⛶ Vollbild
+                </button>
+            </div>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <strong>📌 Version:</strong> <span id="version-text">Diese Shortcuts sind für Blender 4.x optimiert. Die meisten funktionieren auch in älteren Versionen.</span>
+                </div>
+                <div class="info-card">
+                    <strong>💡 Tipp:</strong> <span id="tip-text">Verwenden Sie die Suchfunktion oder navigieren Sie durch die Kategorien.</span>
+                </div>
+                <div class="info-card">
+                    <strong id="stats-text">📊 Insgesamt über 200+ Shortcuts in 10 Kategorien</strong>
+                </div>
+            </div>
+
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Shortcut oder Funktion suchen..." />
+                <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
+            </div>
+
+            <div class="filter-controls" id="filterControls">
+                <button class="filter-btn active" data-difficulty="all">Alle</button>
+                <button class="filter-btn" data-difficulty="beginner">Anfänger</button>
+                <button class="filter-btn" data-difficulty="intermediate">Mittel</button>
+                <button class="filter-btn" data-difficulty="advanced">Fortgeschritten</button>
+            </div>
+        </div>
+
+        <nav class="tabs" id="tabs">
+            <!-- Tabs werden via JavaScript generiert -->
+        </nav>
+
+        <main id="content">
+            <div class="loading">
+                <div class="spinner"></div>
+                <span id="loading-text">Shortcuts werden geladen...</span>
+            </div>
+        </main>
+    </div>
+
+    <div class="floating-actions">
+        <button class="action-btn" onclick="scrollToTop()" title="Nach oben">↑</button>
+        <button class="action-btn" onclick="showHelp()" title="Hilfe">?</button>
+        <button class="action-btn" onclick="showKeyboardShortcuts()" title="Tastenkürzel">⌨️</button>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <!-- Help Modal -->
+    <div class="modal" id="helpModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('helpModal')">&times;</span>
+            <h2 id="help-title">Hilfe & Tipps</h2>
+            <div id="help-content">
+                <h3>🔍 Suchen</h3>
+                <p>Verwenden Sie die Suchleiste, um schnell bestimmte Shortcuts zu finden.</p>
+                
+                <h3>⌨️ App-Tastenkürzel</h3>
+                <ul>
+                    <li><kbd>Ctrl + F</kbd> - Suchfeld fokussieren</li>
+                    <li><kbd>Alt + 1/2/3</kbd> - Sprache wechseln</li>
+                    <li><kbd>Ctrl + 1-9</kbd> - Kategorie wechseln</li>
+                    <li><kbd>Ctrl + D</kbd> - Dark Mode umschalten</li>
+                    <li><kbd>Esc</kbd> - Suche löschen</li>
+                </ul>
+                
+                <h3>🎨 Schwierigkeitsgrade</h3>
+                <div class="difficulty-info">
+                    <span class="difficulty-badge difficulty-beginner">Anfänger</span> - Grundlegende Shortcuts
+                    <br>
+                    <span class="difficulty-badge difficulty-intermediate">Mittel</span> - Häufig verwendete Shortcuts
+                    <br>
+                    <span class="difficulty-badge difficulty-advanced">Fortgeschritten</span> - Spezialisierte Shortcuts
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/shortcuts-data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/export.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
