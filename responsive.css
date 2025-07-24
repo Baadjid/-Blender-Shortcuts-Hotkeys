@@ -96,6 +96,12 @@
         font-size: 15px;
     }
     
+    .tab-wrapper {
+        flex: 1;
+        min-width: 90px;
+        max-width: 140px;
+    }
+
     .tabs {
         flex-direction: row;
         flex-wrap: wrap;
