@@ -48,18 +48,31 @@ class UIManager {
     }
 
     setLanguage(lang) {
-        if (!translations[lang]) return;
-        
-        this.currentLanguage = lang;
-        this.savePreferences();
-        
-        this.updateLanguageButtons();
-        this.updateTranslations();
-        this.updateTabs();
+    if (!translations[lang]) return;
+    
+    console.log('Switching language to:', lang);
+    
+    this.currentLanguage = lang;
+    window.currentLanguage = lang; // Globale Variable setzen
+    this.savePreferences();
+    
+    this.updateLanguageButtons();
+    this.updateTranslations();
+    this.updateTabs();
+    
+    // Content erst nach kurzer Verzögerung aktualisieren
+    setTimeout(() => {
         this.updateContent();
-        
-        this.showToast(t('language-changed', lang), 'success');
-    }
+    }, 50);
+    
+    // Stats als letztes mit längerer Verzögerung
+    setTimeout(() => {
+        this.updateStats();
+        console.log('Language switch complete, stats updated');
+    }, 200);
+    
+    this.showToast(t('language-changed', lang), 'success');
+}
 
     updateLanguageButtons() {
         document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -68,43 +81,43 @@ class UIManager {
     }
 
     updateTranslations() {
-        const elementsToTranslate = [
-            { id: 'main-title', key: 'main-title' },
-            { id: 'subtitle', key: 'subtitle' },
-            { id: 'version-text', key: 'version-text' },
-            { id: 'tip-text', key: 'tip-text' },
-            { id: 'stats-text', key: 'stats-text' },
-            { id: 'loading-text', key: 'loading-text' },
-            { id: 'help-title', key: 'help-title' }
-        ];
+    const elementsToTranslate = [
+        { id: 'main-title', key: 'main-title' },
+        { id: 'subtitle', key: 'subtitle' },
+        { id: 'version-text', key: 'version-text' },
+        { id: 'tip-text', key: 'tip-text' },
+        { id: 'loading-text', key: 'loading-text' },
+        { id: 'help-title', key: 'help-title' }
+        // stats-text NICHT hier!
+    ];
 
-        elementsToTranslate.forEach(({ id, key }) => {
-            const element = document.getElementById(id);
-            if (element) {
-                element.textContent = t(key, this.currentLanguage);
-            }
-        });
-
-        // Update search placeholder
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.placeholder = t('search-placeholder', this.currentLanguage);
+    elementsToTranslate.forEach(({ id, key }) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.textContent = t(key, this.currentLanguage);
         }
+    });
 
-        // Update filter buttons
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        filterBtns.forEach(btn => {
-            const difficulty = btn.getAttribute('data-difficulty');
-            if (difficulty === 'all') {
-                btn.textContent = t('all', this.currentLanguage);
-            } else {
-                btn.textContent = t(difficulty, this.currentLanguage);
-            }
-        });
-
-        // Update button labels
-        this.updateButtonLabels();
+    // Update search placeholder
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.placeholder = t('search-placeholder', this.currentLanguage);
     }
+
+    // Update filter buttons
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        const difficulty = btn.getAttribute('data-difficulty');
+        if (difficulty === 'all') {
+            btn.textContent = t('all', this.currentLanguage);
+        } else {
+            btn.textContent = t(difficulty, this.currentLanguage);
+        }
+    });
+
+    // Update button labels
+    this.updateButtonLabels();
+}
 
     updateButtonLabels() {
         const buttons = [
@@ -123,29 +136,41 @@ class UIManager {
     }
 
     updateTabs() {
-        const tabsContainer = document.getElementById('tabs');
-        if (!tabsContainer) return;
+    const tabsContainer = document.getElementById('tabs');
+    if (!tabsContainer) return;
 
-        tabsContainer.innerHTML = '';
+    tabsContainer.innerHTML = '';
+    
+    Object.keys(config.categories).forEach(categoryKey => {
+        const category = config.categories[categoryKey];
         
-        Object.keys(config.categories).forEach(categoryKey => {
-            const category = config.categories[categoryKey];
-            const tab = document.createElement('button');
-            tab.className = `tab ${categoryKey === this.currentCategory ? 'active' : ''}`;
-            tab.setAttribute('data-category', categoryKey);
-            tab.onclick = () => this.showCategory(categoryKey);
-            
-            const name = categoryNames[this.currentLanguage][categoryKey] || categoryKey;
-            const count = shortcutsHelpers.getCategoryCount(categoryKey, this.currentLanguage);
-            
-            tab.innerHTML = `
-                ${category.icon} ${name}
-                <span class="tab-counter">${count}</span>
-            `;
-            
-            tabsContainer.appendChild(tab);
-        });
-    }
+        // Create wrapper div for each tab
+        const tabWrapper = document.createElement('div');
+        tabWrapper.className = 'tab-wrapper';
+        
+        // Create the tab button
+        const tab = document.createElement('button');
+        tab.className = `tab ${categoryKey === this.currentCategory ? 'active' : ''}`;
+        tab.setAttribute('data-category', categoryKey);
+        tab.onclick = () => this.showCategory(categoryKey);
+        
+        const name = categoryNames[this.currentLanguage][categoryKey] || categoryKey;
+        tab.innerHTML = `${category.icon} ${name}`;
+        
+        // Create the counter badge
+        const counter = document.createElement('span');
+        counter.className = 'tab-counter';
+        const count = shortcutsHelpers.getCategoryCount(categoryKey, this.currentLanguage);
+        counter.textContent = count;
+        
+        // Append tab to wrapper, then counter to wrapper
+        tabWrapper.appendChild(tab);
+        tabWrapper.appendChild(counter);
+        
+        // Append wrapper to tabs container
+        tabsContainer.appendChild(tabWrapper);
+    });
+}
 
     showCategory(categoryId) {
         this.currentCategory = categoryId;
@@ -161,44 +186,45 @@ class UIManager {
     }
 
     updateContent() {
-        const content = document.getElementById('content');
-        if (!content) return;
+    const content = document.getElementById('content');
+    if (!content) return;
 
-        this.showLoading();
+    this.showLoading();
 
-        setTimeout(() => {
-            const shortcuts = shortcutsHelpers.getShortcutsByDifficulty(
-                this.currentCategory, 
-                this.currentLanguage, 
-                this.currentDifficulty
-            );
+    setTimeout(() => {
+        const shortcuts = shortcutsHelpers.getShortcutsByDifficulty(
+            this.currentCategory, 
+            this.currentLanguage, 
+            this.currentDifficulty
+        );
 
-            if (shortcuts.length === 0) {
-                content.innerHTML = `
-                    <div class="no-shortcuts">
-                        <h3>${t('no-shortcuts', this.currentLanguage)}</h3>
-                        <p>No shortcuts found for this category and difficulty level.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            const categoryTitle = categoryNames[this.currentLanguage][this.currentCategory];
-            const categoryIcon = config.categories[this.currentCategory].icon;
-            
+        if (shortcuts.length === 0) {
             content.innerHTML = `
-                <div class="category active">
-                    <h2 class="category-title">${categoryIcon} ${categoryTitle}</h2>
-                    <div class="shortcut-grid" id="shortcut-grid">
-                        ${shortcuts.map(shortcut => this.createShortcutHTML(shortcut)).join('')}
-                    </div>
+                <div class="no-shortcuts">
+                    <h3>${t('no-shortcuts', this.currentLanguage)}</h3>
+                    <p>No shortcuts found for this category and difficulty level.</p>
                 </div>
             `;
-            
-            this.updateStats();
-            this.hideLoading();
-        }, config.loadingDelay);
-    }
+            this.updateStats(); // Stats auch hier aktualisieren
+            return;
+        }
+
+        const categoryTitle = categoryNames[this.currentLanguage][this.currentCategory];
+        const categoryIcon = config.categories[this.currentCategory].icon;
+        
+        content.innerHTML = `
+            <div class="category active">
+                <h2 class="category-title">${categoryIcon} ${categoryTitle}</h2>
+                <div class="shortcut-grid" id="shortcut-grid">
+                    ${shortcuts.map(shortcut => this.createShortcutHTML(shortcut)).join('')}
+                </div>
+            </div>
+        `;
+        
+        this.updateStats(); // Stats nach dem Content-Update aktualisieren
+        this.hideLoading();
+    }, config.loadingDelay);
+}
 
     createShortcutHTML(shortcut) {
         const difficultyText = difficultyLevels[this.currentLanguage][shortcut.difficulty];
@@ -359,20 +385,42 @@ class UIManager {
     }
 
     updateStats() {
-        const visibleItems = document.querySelectorAll('.shortcut-item:not([style*="none"])').length;
-        const totalItems = shortcutsHelpers.getCategoryCount(this.currentCategory, this.currentLanguage);
+    console.log('updateStats called, currentLanguage:', this.currentLanguage);
+    
+    const visibleItems = document.querySelectorAll('.shortcut-item:not([style*="none"])').length;
+    const totalItems = shortcutsHelpers.getCategoryCount(this.currentCategory, this.currentLanguage);
+    
+    const statsElement = document.getElementById('stats-text');
+    if (statsElement) {
+        const isSearching = window.searchManager && window.searchManager.isSearching && window.searchManager.currentSearchTerm;
         
-        const statsElement = document.getElementById('stats-text');
-        if (statsElement) {
-            if (visibleItems < totalItems) {
-                statsElement.textContent = tf('showing-results', visibleItems, totalItems);
-            } else {
-                const totalShortcuts = shortcutsHelpers.getTotalCount(this.currentLanguage);
-                const totalCategories = Object.keys(config.categories).length;
-                statsElement.textContent = tf('stats-text', totalShortcuts, totalCategories);
-            }
+        let newText;
+        if (isSearching && visibleItems < totalItems) {
+            newText = tf('showing-results', visibleItems, totalItems);
+        } else {
+            const totalShortcuts = shortcutsHelpers.getTotalCount(this.currentLanguage);
+            const totalCategories = Object.keys(config.categories).length;
+            newText = tf('stats-text', totalShortcuts, totalCategories);
         }
+        
+        console.log('Setting stats text to:', newText);
+        
+        // Sicherstellen, dass der Text wirklich gesetzt wird
+        statsElement.textContent = newText;
+        
+        // Force reflow
+        statsElement.style.display = 'none';
+        statsElement.offsetHeight; // Trigger reflow
+        statsElement.style.display = '';
+        
+        // Alternative: innerHTML verwenden
+        statsElement.innerHTML = newText;
+        
+        console.log('Stats element content after update:', statsElement.textContent);
+    } else {
+        console.log('Stats element not found!');
     }
+}
 
     initializeEventListeners() {
         // Filter buttons
