@@ -1,6 +1,6 @@
-/* Responsive Design */
+/* Responsive Design - Optimiert für Tablets */
 
-/* Large screens */
+/* Large screens (Desktop) */
 @media (min-width: 1200px) {
     .container {
         max-width: 1600px;
@@ -15,10 +15,49 @@
         min-width: 100px;
         font-size: 15px;
     }
+    
+    .tab {
+        padding: 12px 20px;
+        font-size: 14px;
+        min-width: 120px;
+    }
 }
 
-/* Medium screens */
-@media (max-width: 1024px) {
+/* Medium to Large Tablets (1024px - 1199px) */
+@media (max-width: 1199px) and (min-width: 1025px) {
+    .container {
+        margin: 15px;
+        padding: 25px;
+    }
+    
+    .main-title {
+        font-size: 2.2rem;
+    }
+    
+    .shortcut-grid {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 20px;
+    }
+    
+    .tabs {
+        gap: 8px;
+    }
+    
+    .tab {
+        padding: 12px 18px;
+        font-size: 14px;
+        min-width: 110px;
+    }
+    
+    .tab-counter {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+    }
+}
+
+/* Standard Tablets (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
     .container {
         margin: 15px;
         padding: 20px;
@@ -28,32 +67,88 @@
         font-size: 2rem;
     }
     
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
     .shortcut-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
         gap: 18px;
     }
     
     .tabs {
         gap: 6px;
+        margin-bottom: 25px;
     }
     
     .tab {
-        padding: 10px 16px;
+        padding: 11px 16px;
         font-size: 13px;
         min-width: 100px;
+        border-radius: 20px;
+    }
+    
+    .tab-counter {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+        top: -6px;
+        right: -6px;
+    }
+    
+    .shortcut-item {
+        padding: 18px;
+        gap: 15px;
+    }
+    
+    .shortcut-key {
+        min-width: 80px;
+        padding: 9px 14px;
+        font-size: 13px;
+    }
+    
+    .language-selector {
+        gap: 10px;
+    }
+    
+    .lang-btn, .action-btn-inline {
+        padding: 10px 18px;
+        font-size: 14px;
+        min-width: 130px;
+    }
+    
+    .info-cards {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 15px;
+    }
+    
+    .search-input {
+        padding: 14px 50px 14px 20px;
+        font-size: 15px;
+    }
+    
+    .filter-controls {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+        min-width: 90px;
     }
 }
 
-/* Tablets */
-@media (max-width: 768px) {
+/* Small Tablets and Large Phones (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
     .container {
         margin: 10px;
-        padding: 15px;
-        border-radius: 10px;
+        padding: 18px;
+        border-radius: 12px;
     }
     
     .main-title {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
         margin-bottom: 15px;
     }
     
@@ -74,11 +169,11 @@
     }
     
     .lang-btn, .action-btn-inline {
-        padding: 8px 16px;
+        padding: 9px 16px;
         font-size: 13px;
         flex: 1;
-        min-width: 120px;
-        max-width: 160px;
+        min-width: 115px;
+        max-width: 150px;
     }
     
     .info-cards {
@@ -86,35 +181,26 @@
         gap: 12px;
     }
     
-    .info-card {
-        padding: 12px;
-        font-size: 14px;
-    }
-    
     .search-input {
-        padding: 12px 45px 12px 18px;
+        padding: 13px 45px 13px 18px;
         font-size: 15px;
     }
     
-    .tab-wrapper {
-        flex: 1;
-        min-width: 90px;
-        max-width: 140px;
-    }
-
     .tabs {
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 5px;
+        gap: 6px;
+        margin-bottom: 20px;
     }
     
     .tab {
         flex: 1;
-        min-width: 90px;
-        max-width: 140px;
-        padding: 10px 12px;
+        min-width: 95px;
+        max-width: 130px;
+        padding: 10px 14px;
         font-size: 12px;
         text-align: center;
+        border-radius: 18px;
     }
     
     .tab-counter {
@@ -127,88 +213,35 @@
     
     .shortcut-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 16px;
     }
     
     .shortcut-item {
-        padding: 15px;
+        padding: 16px;
         flex-direction: row;
         align-items: flex-start;
         gap: 12px;
     }
     
     .shortcut-key {
-        min-width: 70px;
-        padding: 8px 12px;
+        min-width: 75px;
+        padding: 9px 13px;
         font-size: 13px;
-    }
-    
-    .shortcut-description {
-        font-size: 15px;
-    }
-    
-    .shortcut-note {
-        font-size: 12px;
-    }
-    
-    .difficulty-badge {
-        font-size: 10px;
-        padding: 2px 6px;
-    }
-    
-    .category-title {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-        padding-bottom: 10px;
-    }
-    
-    .floating-actions {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        flex-direction: row;
-        justify-content: center;
-        margin-top: 20px;
-        gap: 15px;
-    }
-    
-    .action-btn {
-        position: relative;
-        width: 50px;
-        height: 50px;
-        font-size: 16px;
     }
     
     .filter-controls {
         gap: 8px;
+        flex-wrap: wrap;
     }
     
     .filter-btn {
-        padding: 6px 12px;
+        padding: 7px 14px;
         font-size: 12px;
-    }
-    
-    .modal-content {
-        margin: 10% auto;
-        padding: 20px;
-        width: 95%;
-    }
-    
-    .toast {
-        bottom: 20px;
-        right: 10px;
-        left: 10px;
-        transform: translateY(100px);
-        padding: 12px 20px;
-        font-size: 14px;
-    }
-    
-    .toast.show {
-        transform: translateY(0);
+        min-width: 80px;
     }
 }
 
-/* Mobile phones */
+/* Mobile phones (max-width: 480px) */
 @media (max-width: 480px) {
     .container {
         margin: 5px;
@@ -321,37 +354,6 @@
         align-items: center;
     }
     
-    .shortcut-note {
-        font-size: 11px;
-        margin-top: 3px;
-    }
-    
-    .difficulty-badge {
-        font-size: 9px;
-        padding: 2px 5px;
-        margin-top: 5px;
-    }
-    
-    .category-title {
-        font-size: 1.3rem;
-        margin-bottom: 12px;
-        padding-bottom: 8px;
-        text-align: center;
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    .floating-actions {
-        margin-top: 15px;
-        gap: 10px;
-    }
-    
-    .action-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 14px;
-    }
-    
     .filter-controls {
         flex-direction: column;
         align-items: stretch;
@@ -364,49 +366,9 @@
         width: 100%;
         border-radius: 15px;
     }
-    
-    .modal-content {
-        margin: 5% auto;
-        padding: 15px;
-        width: 98%;
-        border-radius: 10px;
-    }
-    
-    .modal h2 {
-        font-size: 1.3rem;
-        margin-bottom: 15px;
-    }
-    
-    .modal h3 {
-        font-size: 1.1rem;
-        margin: 15px 0 8px 0;
-    }
-    
-    .modal p, .modal li {
-        font-size: 14px;
-        line-height: 1.5;
-    }
-    
-    .difficulty-info {
-        padding: 12px;
-        font-size: 13px;
-        line-height: 1.8;
-    }
-    
-    .close {
-        font-size: 24px;
-        right: 15px;
-        top: 10px;
-    }
-    
-    .toast {
-        padding: 10px 15px;
-        font-size: 13px;
-        border-radius: 6px;
-    }
 }
 
-/* Extra small devices */
+/* Extra small devices (max-width: 320px) */
 @media (max-width: 320px) {
     .container {
         margin: 2px;
@@ -447,21 +409,21 @@
     }
 }
 
-/* Landscape orientation adjustments */
-@media (max-width: 768px) and (orientation: landscape) {
+/* Landscape orientation adjustments for tablets */
+@media (max-width: 1024px) and (min-width: 481px) and (orientation: landscape) {
     .tabs {
         flex-direction: row;
         flex-wrap: wrap;
-        max-height: 120px;
-        overflow-y: auto;
+        max-height: none;
+        overflow-y: visible;
     }
     
     .tab {
         flex: 0 0 auto;
-        min-width: 80px;
-        max-width: 120px;
-        font-size: 11px;
-        padding: 8px 10px;
+        min-width: 90px;
+        max-width: 140px;
+        font-size: 12px;
+        padding: 9px 12px;
     }
     
     .shortcut-item {
@@ -477,6 +439,27 @@
     .shortcut-description {
         flex-direction: row;
         align-items: center;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+}
+
+/* Portrait orientation adjustments for tablets */
+@media (max-width: 1024px) and (min-width: 769px) and (orientation: portrait) {
+    .tabs {
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .tab {
+        min-width: 105px;
+        padding: 11px 16px;
+    }
+    
+    .shortcut-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
 }
 
@@ -510,7 +493,7 @@
         transform: none;
     }
     
-    /* Increase touch targets */
+    /* Increase touch targets for tablets */
     .tab,
     .lang-btn,
     .action-btn-inline,
@@ -521,6 +504,17 @@
     
     .search-input {
         min-height: 44px;
+    }
+    
+    /* Specific touch target adjustments for tablets */
+    @media (min-width: 481px) and (max-width: 1024px) {
+        .tab {
+            min-height: 48px;
+        }
+        
+        .shortcut-key {
+            min-height: 40px;
+        }
     }
 }
 
@@ -551,5 +545,109 @@
         background: none;
         color: var(--text-color);
         -webkit-text-fill-color: initial;
+    }
+}
+
+/* Custom tablet-specific improvements */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Better spacing for tablet reading */
+    .category-title {
+        font-size: 1.7rem;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+    }
+    
+    /* Improved floating actions for tablets */
+    .floating-actions {
+        bottom: 25px;
+        right: 25px;
+        gap: 15px;
+    }
+    
+    .action-btn {
+        width: 54px;
+        height: 54px;
+        font-size: 17px;
+    }
+    
+    /* Better modal sizing for tablets */
+    .modal-content {
+        margin: 8% auto;
+        padding: 25px;
+        width: 85%;
+        max-width: 700px;
+    }
+    
+    /* Toast positioning for tablets */
+    .toast {
+        bottom: 80px;
+        right: 25px;
+        left: auto;
+        transform: translateX(400px);
+        padding: 14px 25px;
+        font-size: 15px;
+        max-width: 350px;
+    }
+    
+    .toast.show {
+        transform: translateX(0);
+    }
+}
+
+/* Print optimizations remain unchanged */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .container {
+        box-shadow: none;
+        background: white;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    .floating-actions,
+    .search-container,
+    .tabs,
+    .language-selector,
+    .filter-controls,
+    .action-btn-inline {
+        display: none !important;
+    }
+    
+    .category {
+        display: block !important;
+        page-break-inside: avoid;
+        margin-bottom: 30px;
+    }
+    
+    .shortcut-item {
+        break-inside: avoid;
+        background: white;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+    
+    .shortcut-key {
+        background: #f0f0f0;
+        color: black;
+        border: 1px solid #ccc;
+    }
+    
+    .main-title {
+        color: black;
+        background: none;
+        -webkit-text-fill-color: initial;
+    }
+    
+    .category-title {
+        color: black;
+        border-bottom-color: #ccc;
+    }
+    
+    .info-cards {
+        display: none;
     }
 }
