@@ -1,4 +1,4 @@
-/* Responsive Design - Optimiert für Tablets */
+/* Responsive Design - Komplett mit Portrait-Optimierungen */
 
 /* Large screens (Desktop) */
 @media (min-width: 1200px) {
@@ -354,6 +354,37 @@
         align-items: center;
     }
     
+    .shortcut-note {
+        font-size: 11px;
+        margin-top: 3px;
+    }
+    
+    .difficulty-badge {
+        font-size: 9px;
+        padding: 2px 5px;
+        margin-top: 5px;
+    }
+    
+    .category-title {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        text-align: center;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .floating-actions {
+        margin-top: 15px;
+        gap: 10px;
+    }
+    
+    .action-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 14px;
+    }
+    
     .filter-controls {
         flex-direction: column;
         align-items: stretch;
@@ -366,9 +397,49 @@
         width: 100%;
         border-radius: 15px;
     }
+    
+    .modal-content {
+        margin: 5% auto;
+        padding: 15px;
+        width: 98%;
+        border-radius: 10px;
+    }
+    
+    .modal h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    
+    .modal h3 {
+        font-size: 1.1rem;
+        margin: 15px 0 8px 0;
+    }
+    
+    .modal p, .modal li {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .difficulty-info {
+        padding: 12px;
+        font-size: 13px;
+        line-height: 1.8;
+    }
+    
+    .close {
+        font-size: 24px;
+        right: 15px;
+        top: 10px;
+    }
+    
+    .toast {
+        padding: 10px 15px;
+        font-size: 13px;
+        border-radius: 6px;
+    }
 }
 
-/* Extra small devices (max-width: 320px) */
+/* Extra small devices */
 @media (max-width: 320px) {
     .container {
         margin: 2px;
@@ -406,6 +477,299 @@
         width: 40px;
         height: 40px;
         font-size: 12px;
+    }
+}
+
+/* =================================== */
+/* TABLET PORTRAIT OPTIMIERUNGEN      */
+/* =================================== */
+
+/* Tablet Portrait - Kompakte Darstellung für schmälere Bildschirme */
+@media (max-width: 1024px) and (min-width: 768px) and (orientation: portrait) {
+    .container {
+        margin: 10px;
+        padding: 20px;
+        border-radius: 15px;
+    }
+    
+    .main-title {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+        text-align: center;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    /* Kompaktere Sprachauswahl */
+    .language-selector {
+        flex-direction: row;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+    
+    .lang-btn, .action-btn-inline {
+        padding: 8px 16px;
+        font-size: 13px;
+        min-width: 100px;
+        max-width: 140px;
+        flex: 0 1 auto;
+    }
+    
+    /* Info-Karten gestapelt für bessere Lesbarkeit */
+    .info-cards {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+    
+    .info-card {
+        padding: 12px;
+        font-size: 13px;
+        text-align: center;
+    }
+    
+    /* Suchfeld optimiert */
+    .search-input {
+        padding: 12px 45px 12px 18px;
+        font-size: 15px;
+        max-width: 100%;
+    }
+    
+    /* Tabs in 2-3 Reihen für Portrait */
+    .tabs {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-bottom: 20px;
+        justify-items: center;
+    }
+    
+    .tab-wrapper {
+        width: 100%;
+        position: relative;
+    }
+    
+    .tab {
+        width: 100%;
+        padding: 12px 8px;
+        font-size: 11px;
+        min-width: auto;
+        text-align: center;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        line-height: 1.2;
+        height: 65px;
+        justify-content: center;
+    }
+    
+    .tab-counter {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        width: 18px;
+        height: 18px;
+        font-size: 9px;
+        background: var(--secondary-color);
+        border-radius: 50%;
+    }
+    
+    /* Filter-Buttons kompakter */
+    .filter-controls {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin-bottom: 18px;
+    }
+    
+    .filter-btn {
+        padding: 8px 6px;
+        font-size: 11px;
+        text-align: center;
+        border-radius: 12px;
+        min-width: auto;
+    }
+    
+    /* Shortcut-Grid für Portrait optimiert */
+    .shortcut-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .shortcut-item {
+        padding: 15px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .shortcut-key {
+        min-width: 80px;
+        max-width: 80px;
+        padding: 10px 8px;
+        font-size: 12px;
+        text-align: center;
+        flex-shrink: 0;
+        line-height: 1.2;
+        word-break: break-all;
+    }
+    
+    .shortcut-content {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .shortcut-description {
+        font-size: 14px;
+        margin-bottom: 4px;
+        line-height: 1.3;
+    }
+    
+    .shortcut-note {
+        font-size: 11px;
+        line-height: 1.2;
+        opacity: 0.8;
+    }
+    
+    .difficulty-badge {
+        font-size: 9px;
+        padding: 2px 6px;
+        margin-left: 8px;
+        border-radius: 8px;
+    }
+    
+    .copy-btn {
+        opacity: 1;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        padding: 4px 6px;
+        font-size: 10px;
+        border-radius: 4px;
+    }
+    
+    /* Kategorie-Titel kompakter */
+    .category-title {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    /* Floating Actions angepasst */
+    .floating-actions {
+        bottom: 20px;
+        right: 15px;
+        gap: 10px;
+    }
+    
+    .action-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 16px;
+    }
+    
+    /* Modal für Portrait angepasst */
+    .modal-content {
+        margin: 5% auto;
+        padding: 20px;
+        width: 95%;
+        max-width: 600px;
+        border-radius: 15px;
+    }
+    
+    /* Toast-Benachrichtigungen */
+    .toast {
+        bottom: 80px;
+        left: 15px;
+        right: 15px;
+        transform: translateY(100px);
+        padding: 12px 18px;
+        font-size: 14px;
+        text-align: center;
+        border-radius: 10px;
+    }
+    
+    .toast.show {
+        transform: translateY(0);
+    }
+}
+
+/* Spezielle Anpassungen für kleinere Tablets im Portrait (iPad Mini, etc.) */
+@media (max-width: 820px) and (min-width: 768px) and (orientation: portrait) {
+    .tabs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    
+    .tab {
+        padding: 10px 6px;
+        font-size: 10px;
+        height: 60px;
+    }
+    
+    .main-title {
+        font-size: 1.6rem;
+    }
+    
+    .lang-btn, .action-btn-inline {
+        padding: 7px 12px;
+        font-size: 12px;
+        min-width: 90px;
+    }
+    
+    .shortcut-key {
+        min-width: 70px;
+        max-width: 70px;
+        font-size: 11px;
+    }
+    
+    .shortcut-description {
+        font-size: 13px;
+    }
+}
+
+/* Sehr breite Tablets im Portrait (iPad Pro 12.9", etc.) */
+@media (min-width: 1000px) and (max-width: 1024px) and (orientation: portrait) {
+    .tabs {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    
+    .tab {
+        padding: 14px 10px;
+        font-size: 12px;
+        height: 70px;
+    }
+    
+    .shortcut-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+    
+    .lang-btn, .action-btn-inline {
+        min-width: 120px;
+        padding: 9px 18px;
+        font-size: 14px;
+    }
+    
+    .shortcut-key {
+        min-width: 90px;
+        max-width: 90px;
+        font-size: 13px;
     }
 }
 
@@ -463,6 +827,23 @@
     }
 }
 
+/* Übergang zwischen Landscape und Portrait für sanfte Animationen */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .tabs,
+    .shortcut-grid,
+    .language-selector,
+    .filter-controls {
+        transition: all 0.3s ease;
+    }
+    
+    .tab,
+    .shortcut-item,
+    .lang-btn,
+    .filter-btn {
+        transition: all 0.2s ease;
+    }
+}
+
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
     .shortcut-item:hover {
@@ -493,7 +874,7 @@
         transform: none;
     }
     
-    /* Increase touch targets for tablets */
+    /* Increase touch targets */
     .tab,
     .lang-btn,
     .action-btn-inline,
@@ -515,6 +896,71 @@
         .shortcut-key {
             min-height: 40px;
         }
+    }
+}
+
+/* Touch-Optimierungen speziell für Portrait */
+@media (max-width: 1024px) and (min-width: 768px) and (orientation: portrait) and (hover: none) {
+    .tab {
+        min-height: 65px;
+        padding: 12px 8px;
+    }
+    
+    .shortcut-key {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .filter-btn {
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .lang-btn,
+    .action-btn-inline {
+        min-height: 44px;
+    }
+    
+    /* Größere Touch-Targets für Copy-Button */
+    .copy-btn {
+        min-width: 32px;
+        min-height: 32px;
+        top: 6px;
+        right: 6px;
+    }
+}
+
+/* Accessibility Verbesserungen für Portrait */
+@media (max-width: 1024px) and (min-width: 768px) and (orientation: portrait) {
+    /* Bessere Fokus-Indikatoren */
+    .tab:focus,
+    .shortcut-key:focus,
+    .filter-btn:focus {
+        outline: 3px solid var(--primary-color);
+        outline-offset: 2px;
+        z-index: 10;
+    }
+    
+    /* Bessere Lesbarkeit */
+    .shortcut-description {
+        line-height: 1.4;
+    }
+    
+    .shortcut-note {
+        line-height: 1.3;
+    }
+    
+    /* Verbesserte Kontraste für kleinere Schrift */
+    .tab {
+        font-weight: 500;
+    }
+    
+    .difficulty-badge {
+        font-weight: 600;
     }
 }
 
@@ -548,53 +994,7 @@
     }
 }
 
-/* Custom tablet-specific improvements */
-@media (min-width: 768px) and (max-width: 1024px) {
-    /* Better spacing for tablet reading */
-    .category-title {
-        font-size: 1.7rem;
-        margin-bottom: 20px;
-        padding-bottom: 12px;
-    }
-    
-    /* Improved floating actions for tablets */
-    .floating-actions {
-        bottom: 25px;
-        right: 25px;
-        gap: 15px;
-    }
-    
-    .action-btn {
-        width: 54px;
-        height: 54px;
-        font-size: 17px;
-    }
-    
-    /* Better modal sizing for tablets */
-    .modal-content {
-        margin: 8% auto;
-        padding: 25px;
-        width: 85%;
-        max-width: 700px;
-    }
-    
-    /* Toast positioning for tablets */
-    .toast {
-        bottom: 80px;
-        right: 25px;
-        left: auto;
-        transform: translateX(400px);
-        padding: 14px 25px;
-        font-size: 15px;
-        max-width: 350px;
-    }
-    
-    .toast.show {
-        transform: translateX(0);
-    }
-}
-
-/* Print optimizations remain unchanged */
+/* Print optimizations */
 @media print {
     body {
         background: white;
